@@ -7,6 +7,7 @@ let campoHtml = document.getElementById('campo-gioco')
 let playBtn = document.getElementById('play-btn')
 let selectHtml = document.getElementById('cmSelect')
 let risultatoHtml = document.getElementById('risultato')
+let ascoltatoriAttivi = true
 
 //genero l'array da riempire 
 let arrayBombe = []
@@ -50,8 +51,13 @@ playBtn.addEventListener('click', function(){
 
         //al click di box la console stampa il valore di i e aggiunge la classe custom blue che ho nel mio css
         box.addEventListener('click', function () {
+            if (!ascoltatoriAttivi) {
+                return;
+            }
             
             if (arrayBombe.includes(i)){
+                
+                //se il nostro array include la i cliccata, si aggiunge la classe bomb nel mio css
                 box.classList.add('bomb');
 
                  //alert per interrompere il gioco, cancellare la griglia e impostare di nuovo la somma=0
@@ -59,7 +65,10 @@ playBtn.addEventListener('click', function(){
                 // campoHtml.innerHTML = ''
               
                 risultatoHtml.innerHTML = `<span>Hai perso, il tuo risultato è: ${somma}</span>`
-                somma = 0
+                somma = 0;
+                ascoltatoriAttivi = false;
+
+                
             } else{
 
                 somma = somma + 1
@@ -68,6 +77,7 @@ playBtn.addEventListener('click', function(){
                 if (somma === cmSelect.value - arrayBombe.length) {
                     risultatoHtml.innerHTML = `<span>Congratulazioni, hai vinto!</span>`;
                    somma = 0
+                   ascoltatoriAttivi = false;
                 }
             }
             console.log(i)
@@ -95,3 +105,4 @@ function generaNumeroRandom(min, max) {
   }
 
  
+  
