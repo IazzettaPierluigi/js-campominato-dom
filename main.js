@@ -11,6 +11,9 @@ let selectHtml = document.getElementById('cmSelect')
 let arrayBombe = []
 
 
+//funzione che somma i click dell'utente
+let somma = 0
+
 
 playBtn.addEventListener('click', function(){
 
@@ -48,14 +51,24 @@ playBtn.addEventListener('click', function(){
         box.addEventListener('click', function () {
             
             if (arrayBombe.includes(i)){
-                box.classList.add('bomb')
+                box.classList.add('bomb');
+                alert(`Hai perso! il tuo punteggio è: ${somma}`)
+                campoHtml.innerHTML = ''
+                somma = 0
+                
+            } else{
+
+                somma = somma + 1
+                box.classList.add('blue')
             }
             console.log(i)
 
-            box.classList.toggle('blue')
+
+            console.log(somma)
         
         }
         )
+        
     }
 
     //console log per vedere l'array generato
@@ -71,3 +84,5 @@ playBtn.addEventListener('click', function(){
 function generaNumeroRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
+
+ 
