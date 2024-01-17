@@ -6,6 +6,7 @@
 let campoHtml = document.getElementById('campo-gioco')
 let playBtn = document.getElementById('play-btn')
 let selectHtml = document.getElementById('cmSelect')
+let risultatoHtml = document.getElementById('risultato')
 
 //genero l'array da riempire 
 let arrayBombe = []
@@ -52,14 +53,22 @@ playBtn.addEventListener('click', function(){
             
             if (arrayBombe.includes(i)){
                 box.classList.add('bomb');
-                alert(`Hai perso! il tuo punteggio è: ${somma}`)
-                campoHtml.innerHTML = ''
-                somma = 0
+
+                 //alert per interrompere il gioco, cancellare la griglia e impostare di nuovo la somma=0
+                // alert(`Hai perso! il tuo punteggio è: ${somma}`)
+                // campoHtml.innerHTML = ''
+              
+                risultatoHtml.innerHTML = `<span>Hai perso, il tuo risultato è: ${somma}</span>`
                 
             } else{
 
                 somma = somma + 1
                 box.classList.add('blue')
+
+                if (somma === cmSelect.value - arrayBombe.length) {
+                    risultatoHtml.innerHTML = `<span>Congratulazioni, hai vinto!</span>`;
+                   
+                }
             }
             console.log(i)
 

@@ -18,6 +18,7 @@ main{
     align-items: center;
     justify-content: center;
     height: 80vh;
+    flex-direction: column;
 }
 
 
@@ -28,7 +29,7 @@ main #campo-gioco{
 
     display: flex;
     flex-wrap: wrap;
-    
+    ;
 }
 
 .box{
@@ -49,4 +50,9 @@ main #campo-gioco{
 
 .bomb{
     background-color: red;
+}
+
+#risultato span{
+    font-size: 20px;
+    font-weight: bold;
 }
