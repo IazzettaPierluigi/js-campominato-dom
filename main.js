@@ -59,7 +59,7 @@ playBtn.addEventListener('click', function(){
                 // campoHtml.innerHTML = ''
               
                 risultatoHtml.innerHTML = `<span>Hai perso, il tuo risultato è: ${somma}</span>`
-                
+                somma = 0
             } else{
 
                 somma = somma + 1
@@ -67,7 +67,7 @@ playBtn.addEventListener('click', function(){
 
                 if (somma === cmSelect.value - arrayBombe.length) {
                     risultatoHtml.innerHTML = `<span>Congratulazioni, hai vinto!</span>`;
-                   
+                   somma = 0
                 }
             }
             console.log(i)
