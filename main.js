@@ -28,6 +28,8 @@ playBtn.addEventListener('click', function(){
         }
     }
 
+
+    //ciclo for per generare i box
     for (let i = 1; i <= cmSelect.value; i++){
         //creo il div al quale darò classe box
         let box = document.createElement("div")
@@ -44,7 +46,10 @@ playBtn.addEventListener('click', function(){
 
         //al click di box la console stampa il valore di i e aggiunge la classe custom blue che ho nel mio css
         box.addEventListener('click', function () {
-        
+            
+            if (arrayBombe.includes(i)){
+                box.classList.add('bomb')
+            }
             console.log(i)
 
             box.classList.toggle('blue')

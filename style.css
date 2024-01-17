@@ -46,3 +46,7 @@ main #campo-gioco{
     background-color: blue;
     color: white;
 }
+
+.bomb{
+    background-color: red;
+}
