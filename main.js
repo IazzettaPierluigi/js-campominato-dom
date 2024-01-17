@@ -1,18 +1,32 @@
-// L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-// Ogni cella ha un numero progressivo, da 1 a 100.
-// Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-// Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
-
+// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. Attenzione: Nell’array delle bombe non potranno esserci due numeri uguali.
+// In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
+// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 
 let campoHtml = document.getElementById('campo-gioco')
 let playBtn = document.getElementById('play-btn')
 let selectHtml = document.getElementById('cmSelect')
 
+//genero l'array da riempire 
+let arrayBombe = []
+
+
 
 playBtn.addEventListener('click', function(){
 
+
+
     //per pulire il campo ogni volta che si  cambia difficoltà e si preme play
     campoHtml.innerHTML = ''
+
+    //riempio l'arrayBombe con i numeri casuali unici da 1 a 100
+    while (arrayBombe.length < 16){
+        let numeroRandom = generaNumeroRandom(1, 100);
+
+        if (!arrayBombe.includes(numeroRandom)){
+            arrayBombe.push(numeroRandom)
+        }
+    }
 
     for (let i = 1; i <= cmSelect.value; i++){
         //creo il div al quale darò classe box
@@ -39,4 +53,16 @@ playBtn.addEventListener('click', function(){
         )
     }
 
+    //console log per vedere l'array generato
+    console.log(arrayBombe)
+
 })
+
+
+
+///////////////////////FUNZIONI///////////////////////!SECTION
+
+//FUNZIONE PER GENERARE IL NUMERO RANDOM
+function generaNumeroRandom(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
